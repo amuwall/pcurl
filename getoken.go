@@ -96,6 +96,11 @@ func GetArgsToken(curlString string) (curl []string, err error) {
 		return nil, toErr(sign)
 	}
 
+	for i, _ := range curl {
+		curl[i] = strings.Trim(curl[i], "\\\r\n")
+		curl[i] = strings.TrimSpace(curl[i])
+	}
+
 	return
 }
 
